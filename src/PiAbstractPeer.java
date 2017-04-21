@@ -1,3 +1,15 @@
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.geom.Arc2D;
+import java.net.MalformedURLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+
 /**
  * Created by Konstantin on 19.04.2017.
  */
@@ -12,6 +24,14 @@ public abstract class PiAbstractPeer extends Thread
         BP_REACHED,
         SYNTAX_ERROR,
         SUCCESS,
+        START,
+        STEP,
+        SET_BP,
+        DELETE_BP,
+        CLEAR,
+        CONTINUE,
+        DIE,
+        SHUTDOWN
     }
 
     protected int port;
@@ -20,4 +40,72 @@ public abstract class PiAbstractPeer extends Thread
     PiAbstractPeer(int port) { this.port = port; }
 
     PiAbstractPeer() { port = 8698; }
+
+    protected static JSONObject formJson(msg m, ArrayList<Object> arg)
+    {
+        JSONObject jso = new JSONObject();
+        jso.put("message", m.toString());
+        switch (m)
+        {
+            case OK:
+            case ERR:
+            case WAIT4INPUT:
+            case SUCCESS:
+            case STEP:
+            case CLEAR:
+            case DIE:
+            case SHUTDOWN:
+            case CONTINUE:
+                return jso;
+            case OUTPUT:
+                if (arg.size() < 1) return jso;
+                jso.put("output", arg.get(0));
+                return jso;
+            case INPUT:
+                if (arg.size() < 1) return jso;
+                jso.put("input", arg.get(0));
+                return jso;
+            case BP_REACHED:
+                if (arg.size() < 3) return jso;
+                jso.put("x", arg.get(0));
+                jso.put("y", arg.get(1));
+                for (Object i : ((Map<String, Object>)arg.get(2)).keySet())
+                    jso.put(i, ((Map<String, Object>) arg.get(2)).get(i));
+                return jso;
+            case SYNTAX_ERROR:
+                if (arg.size() < 3) return jso;
+                jso.put("x", arg.get(0));
+                jso.put("y", arg.get(1));
+                jso.put("err_msg", arg.get(2));
+                return jso;
+            case START:
+                if (arg.size() < 2) return jso;
+                jso.put("filename", arg.get(0));
+                jso.put("mode", arg.get(1));
+                return jso;
+            case SET_BP:
+            case DELETE_BP:
+                if (arg.size() < 2) return jso;
+                jso.put("x", arg.get(0));
+                jso.put("y", arg.get(1));
+                return jso;
+        }
+        return null;
+    }
+
+    public static void main(String[] argv)
+    {
+        ArrayList<Object> arg = new ArrayList();
+        arg.add(new Integer(120));
+        arg.add(new Integer(300));
+        Map<String, Object> map = new HashMap();
+        ArrayList<Double> st = new ArrayList();
+        st.add(new Double(3.14));
+        st.add(new Double(2.7));
+        st.add(new Double(0.001));
+        map.put("Stack", st);
+        arg.add(map);
+        for (msg it : msg.values())
+            System.out.println(formJson(it, arg).toString() + "\n");
+    }
 }
