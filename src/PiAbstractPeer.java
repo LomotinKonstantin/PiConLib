@@ -1,13 +1,14 @@
 /**
  * Created by Konstantin on 19.04.2017.
  */
-public abstract class PiAbstractServer extends Thread
+public abstract class PiAbstractPeer extends Thread
 {
-    protected enum msg {
+    protected static enum msg {
         OK,
         ERR,
         WAIT4INPUT,
         OUTPUT,
+        INPUT,
         BP_REACHED,
         SYNTAX_ERROR,
         SUCCESS,
@@ -15,7 +16,8 @@ public abstract class PiAbstractServer extends Thread
 
     protected int port;
 
-    PiAbstractServer(int port) { this.port = port; }
 
-    PiAbstractServer() { port = 8698; }
+    PiAbstractPeer(int port) { this.port = port; }
+
+    PiAbstractPeer() { port = 8698; }
 }
