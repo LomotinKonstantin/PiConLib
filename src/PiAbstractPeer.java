@@ -1,14 +1,10 @@
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.geom.Arc2D;
-import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * Created by Konstantin on 19.04.2017.
@@ -93,6 +89,22 @@ public abstract class PiAbstractPeer extends Thread
         return null;
     }
 
+    static protected HashMap<String, Object> parseJson(String json)
+    {
+        HashMap<String, Object> res = new HashMap<>();
+        JSONParser jp = new JSONParser();
+        try
+        {
+            return (HashMap<String, Object>) jp.parse(json);
+
+        }
+        catch (ParseException e)
+        {
+            System.out.println(e);
+        }
+        return null;
+    }
+
     public static void main(String[] argv)
     {
         ArrayList<Object> arg = new ArrayList();
@@ -107,5 +119,17 @@ public abstract class PiAbstractPeer extends Thread
         arg.add(map);
         for (msg it : msg.values())
             System.out.println(formJson(it, arg).toString() + "\n");
+        map = parseJson(formJson(msg.BP_REACHED, arg).toString());
+        for (String it : map.keySet())
+        {
+            System.out.println(it + " " + map.get(it) + " " + map.get(it).getClass());
+            if (it.equalsIgnoreCase("err_msg"))
+            {
+                HashMap<String, Object> map1;
+                map1 = parseJson(map.get(it).toString());
+                for (String j : map1.keySet())
+                    System.out.println("\t" + it + " " + map1.get(it) + " " + map1.get(it).getClass());
+            }
+        }
     }
 }
