@@ -9,7 +9,7 @@ import java.util.Map;
 /**
  * Created by Konstantin on 19.04.2017.
  */
-public abstract class PiAbstractPeer extends Thread
+public abstract class PiAbstractPeer
 {
     protected static enum msg {
         OK,
