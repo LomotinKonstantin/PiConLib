@@ -1,10 +1,11 @@
+import com.sun.istack.internal.Nullable;
+import javafx.util.Pair;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by Konstantin on 19.04.2017.
@@ -37,10 +38,9 @@ public abstract class PiAbstractPeer
 
     PiAbstractPeer() { port = 8698; }
 
-    protected static JSONObject formJson(msg m, ArrayList<Object> arg)
+    protected static JSONObject formJson(msg m)
     {
         JSONObject jso = new JSONObject();
-        jso.put("message", m.toString());
         switch (m)
         {
             case OK:
@@ -52,39 +52,82 @@ public abstract class PiAbstractPeer
             case DIE:
             case SHUTDOWN:
             case CONTINUE:
+                jso.put("message", m.toString());
                 return jso;
+        }
+        return jso;
+    }
+
+    @Nullable
+    protected static JSONObject formJson(msg m, Message data)
+    {
+        JSONObject jso = new JSONObject();
+        jso.put("message", m.toString());
+        switch (m)
+        {
             case OUTPUT:
-                if (arg.size() < 1) return jso;
-                jso.put("output", arg.get(0));
+            {
+                String out = data.output();
+                if (out.isEmpty()) return jso;
+                jso.put("output", out);
                 return jso;
+            }
             case INPUT:
-                if (arg.size() < 1) return jso;
-                jso.put("input", arg.get(0));
+            {
+                String inp = data.input();
+                if (inp.isEmpty()) return jso;
+                jso.put("input", inp);
                 return jso;
+            }
             case BP_REACHED:
-                if (arg.size() < 3) return jso;
-                jso.put("x", arg.get(0));
-                jso.put("y", arg.get(1));
-                for (Object i : ((Map<String, Object>)arg.get(2)).keySet())
-                    jso.put(i, ((Map<String, Object>) arg.get(2)).get(i));
+            {
+                int x = data.x();
+                int y = data.y();
+                Stack<Pair<String, Stack<Object>>> stack = data.stackOfFunctions();
+                if ((x < 0) || (y < 0) || (stack == null)) return jso;
+                jso.put("x", x);
+                jso.put("y", y);
+                for (Pair<String, Stack<Object>> p : stack)
+                {
+                    Stack<Object> vars = p.getValue();
+                    String key = p.getKey();
+                    JSONArray js_st = new JSONArray();
+                    for (Object v : vars)
+                        js_st.add(v);
+                    jso.put(key, vars);
+                }
                 return jso;
+            }
             case SYNTAX_ERROR:
-                if (arg.size() < 3) return jso;
-                jso.put("x", arg.get(0));
-                jso.put("y", arg.get(1));
-                jso.put("err_msg", arg.get(2));
+            {
+                int x = data.x();
+                int y = data.y();
+                String err_msg = data.errorMessage();
+                if ((x < 0) || (y < 0) || (err_msg.isEmpty())) return jso;
+                jso.put("x", x);
+                jso.put("y", x);
+                jso.put("err_msg", err_msg);
                 return jso;
+            }
             case START:
-                if (arg.size() < 2) return jso;
-                jso.put("filename", arg.get(0));
-                jso.put("mode", arg.get(1));
+            {
+                String filename = data.filename();
+                int mode = data.mode();
+                if (filename.isEmpty() || (mode == -1)) return jso;
+                jso.put("filename", filename);
+                jso.put("mode", mode);
                 return jso;
+            }
             case SET_BP:
             case DELETE_BP:
-                if (arg.size() < 2) return jso;
-                jso.put("x", arg.get(0));
-                jso.put("y", arg.get(1));
+            {
+                int x = data.x();
+                int y = data.y();
+                if ((x < 0) || (y < 0)) return jso;
+                jso.put("x", x);
+                jso.put("y", y);
                 return jso;
+            }
         }
         return null;
     }
@@ -107,29 +150,6 @@ public abstract class PiAbstractPeer
 
     public static void main(String[] argv)
     {
-        ArrayList<Object> arg = new ArrayList();
-        arg.add(new Integer(120));
-        arg.add(new Integer(300));
-        Map<String, Object> map = new HashMap();
-        ArrayList<Double> st = new ArrayList();
-        st.add(new Double(3.14));
-        st.add(new Double(2.7));
-        st.add(new Double(0.001));
-        map.put("Stack", st);
-        arg.add(map);
-        for (msg it : msg.values())
-            System.out.println(formJson(it, arg).toString() + "\n");
-        map = parseJson(formJson(msg.BP_REACHED, arg).toString());
-        for (String it : map.keySet())
-        {
-            System.out.println(it + " " + map.get(it) + " " + map.get(it).getClass());
-            if (it.equalsIgnoreCase("err_msg"))
-            {
-                HashMap<String, Object> map1;
-                map1 = parseJson(map.get(it).toString());
-                for (String j : map1.keySet())
-                    System.out.println("\t" + it + " " + map1.get(it) + " " + map1.get(it).getClass());
-            }
-        }
+
     }
 }
