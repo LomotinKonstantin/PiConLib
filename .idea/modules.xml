@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/PietInterpreter.iml" filepath="$PROJECT_DIR$/PietInterpreter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PiConLib.iml" filepath="$PROJECT_DIR$/PiConLib.iml" />
     </modules>
   </component>
 </project>
