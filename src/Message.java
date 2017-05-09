@@ -6,9 +6,10 @@ import java.util.Stack;
  */
 
 /**
- * Интерфейс сообщения обмена между интерпретатором и IDE.
+ * Класс сообщения обмена между интерпретатором и IDE.
+ * Предоставляет базовый интерфейс работы с полями: чтение и запись.
  */
-public abstract class Message
+public class Message
 {
     /**
      * Направления указателей CC и DP (по часовой стрелке).
@@ -17,7 +18,7 @@ public abstract class Message
      * BOTTOM = 2
      * LEFT = 3
      */
-    protected static int    TOP = 0,
+    public final static int TOP = 0,
                             RIGHT = 1,
                             BOTTOM = 2,
                             LEFT = 3;
@@ -25,7 +26,7 @@ public abstract class Message
     /**
      * Режимы запуска интерпретатора.
      */
-    protected static int    NORMAL = 0,
+    public final static int NORMAL = 0,
                             DEBUG = 1;
 
     /**
@@ -67,6 +68,8 @@ public abstract class Message
      * Полный путь к файлу исходников в графическом формате.
      */
     protected String filename = "";
+
+    Message() {}
 
     /**
      * Метод доступа к стеку функций <font color="red">(не переменных!)</font>.
@@ -136,4 +139,54 @@ public abstract class Message
      * @return Строка с полным именем файла.
      */
     public String filename() { return filename; }
+
+    public void setStack(Stack<Pair<String, Stack<Object>>> stack)
+    {
+        this.func_stack = stack;
+    }
+
+    public void setCC(int cc)
+    {
+        this.cc = cc;
+    }
+
+    public void setDP(int dp)
+    {
+        this.dp = dp;
+    }
+
+    public void setX(int x)
+    {
+        this.x = x;
+    }
+
+    public void setY(int y)
+    {
+        this.y = y;
+    }
+
+    public void setMode(int mode)
+    {
+        this.mode = mode;
+    }
+
+    public void setInput(String input)
+    {
+        this.input = input;
+    }
+
+    public void setOutput(String output)
+    {
+        this.output = output;
+    }
+
+    public void setErrorMessage(String err_msg)
+    {
+        this.err_msg = err_msg;
+    }
+
+    public void setFilename(String filename)
+    {
+        this.filename = filename;
+    }
 }

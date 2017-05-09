@@ -1,4 +1,5 @@
 import com.sun.istack.internal.Nullable;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import javafx.util.Pair;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -38,9 +39,10 @@ public abstract class PiAbstractPeer
 
     PiAbstractPeer() { port = 8698; }
 
-    protected static JSONObject formJson(msg m)
+    protected static JSONObject formJson(msg m, Message data)
     {
         JSONObject jso = new JSONObject();
+        jso.put("message", m.toString());
         switch (m)
         {
             case OK:
@@ -52,19 +54,7 @@ public abstract class PiAbstractPeer
             case DIE:
             case SHUTDOWN:
             case CONTINUE:
-                jso.put("message", m.toString());
                 return jso;
-        }
-        return jso;
-    }
-
-    @Nullable
-    protected static JSONObject formJson(msg m, Message data)
-    {
-        JSONObject jso = new JSONObject();
-        jso.put("message", m.toString());
-        switch (m)
-        {
             case OUTPUT:
             {
                 String out = data.output();
@@ -129,7 +119,7 @@ public abstract class PiAbstractPeer
                 return jso;
             }
         }
-        return null;
+        return jso;
     }
 
     static protected HashMap<String, Object> parseJson(String json)
@@ -148,8 +138,35 @@ public abstract class PiAbstractPeer
         return null;
     }
 
-    public static void main(String[] argv)
-    {
 
-    }
+
+//    public static void main(String[] argv)
+//    {
+//        Message message = new Message();
+//        message.x = 4;
+//        message.y = 2;
+//        message.err_msg = "Unknown Error! ☺♀";
+//        message.input = "Input text";
+//        message.output = "Output text";
+//        message.func_stack = new Stack<>();
+//        for (int i = 0; i < 3; ++i)
+//        {
+//            Pair<String, Stack<Object>> pair;
+//            Stack<Object> st = new Stack<>();
+//            st.add(new Integer(i * 2));
+//            st.add(new Float(i * 1.5));
+//            st.add(new Boolean(i > 1));
+//            pair = new Pair<>("func_" + i, st);
+//            message.func_stack.add(pair);
+//        }
+//        message.cc = Message.BOTTOM;
+//        message.dp = Message.LEFT;
+//        message.filename = "./src.gif";
+//        message.mode = Message.DEBUG;
+//
+//        for (msg m : msg.values())
+//        {
+//            System.out.println(formJson(m, message).toJSONString() + "\n");
+//        }
+//    }
 }
