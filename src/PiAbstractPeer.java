@@ -11,7 +11,7 @@ import java.util.Map;
  */
 public abstract class PiAbstractPeer
 {
-    protected static enum msg {
+    protected enum msg {
         OK,
         ERR,
         WAIT4INPUT,

@@ -1,6 +1,5 @@
 import javafx.util.Pair;
 import java.util.Stack;
-import java.util.StringTokenizer;
 
 /**
  * Created by Konstantin on 25.04.2017.
@@ -64,4 +63,18 @@ public interface MessageInterface
      * @return режим работы агента.
      */
     String mode();
+
+    /**
+     * Метод доступа к тексту, который попадает в выходной поток.
+     * <b>Метод актуален для стороны интерпретатора, а не IDE!</b>
+     * @return Строка, которая должна попасть  в <i>stdout</i>
+     */
+    String output();
+
+    /**
+     * Метод доступа к тексту, который введен пользователем во входной поток.
+     * <b>Метод актуален для стороны IDE, а не интерпретатора!</b>
+     * @return Строка, которая пришла из <i>stdin</i>
+     */
+    String input();
 }
