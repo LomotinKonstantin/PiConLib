@@ -20,7 +20,7 @@ public class test
         thread.start();
         client.connect();
 
-        for (Message.msg m : Message.msg.values())
+        for (Message.types m : Message.types.values())
         {
             Message message = new Message();
             message.x = 4;

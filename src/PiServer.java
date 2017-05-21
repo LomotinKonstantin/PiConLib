@@ -4,6 +4,22 @@ import java.net.ServerSocket;
 /**
  * Created by Konstantin on 21.04.2017.
  */
+
+/**
+ * Пример использования:
+ *
+ * PiServer server = new PiServer();
+ * server.waitForConnection();
+ * // Если соединение не удалось, в консоль будет выведен текст эксепшена.
+ * // Если все в порядке, то...
+ * Message message = new Message();
+ * // Наполнение сообщения, например...
+ * message.setType(Message.types.OK);
+ * server.send(message);
+ * // Отправили. Теперь ждем ответа. Функция может работать с задержкой.
+ * Message response = server.receive();
+ *
+ */
 public class PiServer extends PiAbstractPeer
 {
     protected ServerSocket serverSocket;

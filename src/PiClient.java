@@ -4,6 +4,22 @@ import java.net.Socket;
 /**
  * Created by Konstantin on 20.05.2017.
  */
+
+/**
+ * Пример использования:
+ *
+ * PiClient client = new PiClient();
+ * client.connect();
+ * // Если соединение не удалось, в консоль будет выведен текст эксепшена.
+ * // Если все в порядке, то...
+ * Message message = new Message();
+ * // Наполнение сообщения, например...
+ * message.setType(Message.types.OK);
+ * client.send(message);
+ * // Отправили. Теперь ждем ответа. Функция может работать с задержкой.
+ * Message response = client.receive();
+ *
+ */
 public class PiClient extends PiAbstractPeer
 {
     protected Socket conn;

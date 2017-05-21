@@ -12,7 +12,8 @@ import java.util.Stack;
 
 /**
  * Класс сообщения обмена между интерпретатором и IDE.
- * Предоставляет базовый интерфейс работы с полями: чтение и запись.
+ * Предоставляет базовый интерфейс работы с полями: чтение и записьб
+ * а также преобразование в JSON и создание Message из JSON строки
  */
 public class Message
 {
@@ -76,14 +77,15 @@ public class Message
      */
     protected String filename = "";
 
-    protected msg type = msg.UNKNOWN_MSG;
+    protected types type = types.UNKNOWN_MSG;
 
     /* Константы */
 
     /**
      * Типы сообщений
      */
-    public enum msg {
+    public enum types
+    {
         OK,
         ERR,
         WAIT4INPUT,
@@ -196,7 +198,7 @@ public class Message
     @Deprecated
     public String getFilename() { return filename; }
 
-    public msg getType() { return type; }
+    public types getType() { return type; }
 
     /* Модификаторы */
 
@@ -252,7 +254,7 @@ public class Message
         this.filename = filename;
     }
 
-    public void setType(msg m) { this.type = m; }
+    public void setType(types m) { this.type = m; }
 
     public JSONObject toJsonObject()
     {
@@ -328,7 +330,7 @@ public class Message
 
     protected void loadFromJson(String json_str)
     {
-        msg res_key = msg.UNKNOWN_MSG;
+        types res_key = types.UNKNOWN_MSG;
         JSONParser jp = new JSONParser();
         Stack func_stack = new Stack();
         JSONObject jso;
@@ -344,7 +346,7 @@ public class Message
                     case MESSAGE:
                     {
                         String val = (String) value;
-                        for (msg msg_type : msg.values())
+                        for (types msg_type : types.values())
                         {
                             if (val.equalsIgnoreCase(msg_type.toString()))
                             {
