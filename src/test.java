@@ -7,8 +7,19 @@ import java.util.Stack;
  */
 public class test
 {
+
+
     public static void main(String[] argv)
     {
+        ThreadServer server = new ThreadServer();
+        Thread thread = new Thread(server);
+        PiClient client = new PiClient();
+
+        System.out.println(Thread.currentThread().getId());
+
+        thread.start();
+        client.connect();
+
         for (Message.msg m : Message.msg.values())
         {
             Message message = new Message();
@@ -33,11 +44,11 @@ public class test
             message.filename = "./src.gif";
             message.mode = Message.DEBUG;
             message.type = m;
+            client.send(message);
 
-            String json_string = message.toJsonObject().toJSONString();
-            System.out.println("To JSON:\n" + json_string + "\n");
-            Message json_message = new Message(json_string);
-            System.out.println("From JSON:");
+
+            Message json_message = server.receive();
+            System.out.println("Received::");
             System.out.println("X: " + json_message.getX());
             System.out.println("Y: " + json_message.getY());
             System.out.println("CC: " + json_message.getCc());

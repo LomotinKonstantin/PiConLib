@@ -1,8 +1,5 @@
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
-import java.net.Socket;
 
 /**
  * Created by Konstantin on 21.04.2017.
@@ -10,9 +7,6 @@ import java.net.Socket;
 public class PiServer extends PiAbstractPeer
 {
     protected ServerSocket serverSocket;
-    protected Socket conn;
-    protected DataInputStream inputStream;
-    protected DataOutputStream outputStream;
     protected boolean connected;
 
     PiServer(int port)
@@ -23,34 +17,18 @@ public class PiServer extends PiAbstractPeer
     PiServer()
     {
         super();
-        connected = false;
     }
 
-    public void start()
+    public boolean waitForConnection()
     {
         try
         {
             serverSocket = new ServerSocket(port);
+//            System.out.println("PiServer is waiting for connection...");
             conn = serverSocket.accept();
-            inputStream = new DataInputStream(conn.getInputStream());
-            outputStream = new DataOutputStream(conn.getOutputStream());
+            initStreams(conn);
             connected = true;
-        }
-        catch (IOException e)
-        {
-            System.out.println(e);
-        }
-    }
-
-    public boolean send(Message msg)
-    {
-        if (!connected)
-            return false;
-        String jsonMessage = msg.toJsonObject().toJSONString();
-        try
-        {
-            outputStream.writeUTF(jsonMessage);
-            outputStream.flush();
+//            System.out.println("PiServer accepted connection");
             return true;
         }
         catch (IOException e)
@@ -58,23 +36,5 @@ public class PiServer extends PiAbstractPeer
             System.out.println(e);
         }
         return false;
-    }
-
-    /**
-     * Работает с задержкой
-     * @return null в случае ошибки, иначе - посылку в UTF-8
-     */
-    public String receive()
-    {
-        try
-        {
-            String inp = inputStream.readUTF();
-            return inp;
-        }
-        catch (IOException e)
-        {
-            System.out.println(e);
-        }
-        return null;
     }
 }
