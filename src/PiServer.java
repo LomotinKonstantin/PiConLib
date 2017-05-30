@@ -49,7 +49,7 @@ public class PiServer extends PiAbstractPeer
         }
         catch (IOException e)
         {
-            System.out.println(e);
+            printException(e);
         }
         return false;
     }

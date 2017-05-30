@@ -17,6 +17,8 @@ public abstract class PiAbstractPeer
 
     protected Socket conn;
 
+    protected Printable console;
+
     PiAbstractPeer(int port)
     { this.port = port; }
 
@@ -31,7 +33,7 @@ public abstract class PiAbstractPeer
         }
         catch (IOException e)
         {
-            System.out.println(e);
+            printException(e);
         }
     }
 
@@ -48,7 +50,7 @@ public abstract class PiAbstractPeer
         }
         catch (IOException e)
         {
-            System.out.println(e);
+            printException(e);
         }
         return false;
     }
@@ -66,7 +68,7 @@ public abstract class PiAbstractPeer
         }
         catch (IOException e)
         {
-            System.out.println(e);
+            printException(e);
         }
         return null;
     }
@@ -91,9 +93,22 @@ public abstract class PiAbstractPeer
         }
         catch (IOException e)
         {
-            System.out.println(e);
+            printException(e);
         }
         return false;
+    }
+
+    public void setPrintable(Printable p)
+    {
+        console = p;
+    }
+
+    protected void printException(Exception e)
+    {
+        if (console == null)
+            System.out.println(e);
+        else
+            console.print(e);
     }
 
 }

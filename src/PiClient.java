@@ -41,12 +41,11 @@ public class PiClient extends PiAbstractPeer
             conn = new Socket("127.0.0.1", port);
             initStreams(conn);
             connected = true;
-//            System.out.println("PiClient connected!");
             return true;
         }
         catch (IOException e)
         {
-            System.out.println(e);
+            printException(e);
         }
         return false;
     }
