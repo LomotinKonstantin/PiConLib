@@ -23,7 +23,7 @@ import java.net.ServerSocket;
 public class PiServer extends PiAbstractPeer
 {
     protected ServerSocket serverSocket;
-    protected boolean connected;
+    protected int timeout = 3000;
 
     PiServer(int port)
     {
@@ -35,16 +35,20 @@ public class PiServer extends PiAbstractPeer
         super();
     }
 
+    public void setTimeout(int t)
+    {
+        timeout = t;
+    }
+
     public boolean waitForConnection()
     {
         try
         {
             serverSocket = new ServerSocket(port);
-//            System.out.println("PiServer is waiting for connection...");
+            serverSocket.setSoTimeout(timeout);
             conn = serverSocket.accept();
             initStreams(conn);
             connected = true;
-//            System.out.println("PiServer accepted connection");
             return true;
         }
         catch (IOException e)

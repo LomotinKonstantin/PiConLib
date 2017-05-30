@@ -10,10 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="649a2f1c-362e-4a67-a1bf-aae3e08bf532" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Printable.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PiAbstractPeer.java" afterPath="$PROJECT_DIR$/src/PiAbstractPeer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PiClient.java" afterPath="$PROJECT_DIR$/src/PiClient.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PiServer.java" afterPath="$PROJECT_DIR$/src/PiServer.java" />
     </list>
     <ignored path="PiConLib.iws" />
@@ -35,16 +32,18 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="PiAbstractPeer.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PiAbstractPeer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/PiAbstractPeer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="474">
-              <caret line="102" column="20" selection-start-line="102" selection-start-column="20" selection-end-line="102" selection-end-column="20" />
+            <state relative-caret-position="1419">
+              <caret line="82" column="22" selection-start-line="82" selection-start-column="22" selection-end-line="82" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#initStreams#0;class#PiAbstractPeer#0" expanded="false" />
                 <element signature="method#send#0;class#PiAbstractPeer#0" expanded="false" />
                 <element signature="method#receive#0;class#PiAbstractPeer#0" expanded="false" />
+                <element signature="e#1713#1714#0" expanded="true" />
+                <element signature="e#1745#1746#0" expanded="true" />
                 <element signature="method#disconnect#0;class#PiAbstractPeer#0" expanded="false" />
                 <element signature="method#printException#0;class#PiAbstractPeer#0" expanded="false" />
               </folding>
@@ -62,13 +61,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PiServer.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PiServer.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/PiServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="939">
-              <caret line="51" column="30" selection-start-line="51" selection-start-column="30" selection-end-line="51" selection-end-column="30" />
+            <state relative-caret-position="1188">
+              <caret line="42" column="6" selection-start-line="42" selection-start-column="6" selection-end-line="42" selection-end-column="6" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#837#838#0" expanded="true" />
+                <element signature="e#864#865#0" expanded="true" />
+                <element signature="method#waitForConnection#0;class#PiServer#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -77,7 +79,7 @@
       <file leaf-file-name="PiClient.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/PiClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
+            <state relative-caret-position="411">
               <caret line="43" column="24" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -89,7 +91,7 @@
       <file leaf-file-name="test.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
+            <state relative-caret-position="627">
               <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -101,7 +103,7 @@
       <file leaf-file-name="ThreadServer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ThreadServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
+            <state relative-caret-position="396">
               <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
@@ -113,7 +115,7 @@
       <file leaf-file-name="Message.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Message.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="393">
+            <state relative-caret-position="11847">
               <caret line="398" column="32" selection-start-line="398" selection-start-column="32" selection-end-line="398" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -150,9 +152,9 @@
         <option value="$PROJECT_DIR$/src/Message.java" />
         <option value="$PROJECT_DIR$/src/OutputInterface.java" />
         <option value="$PROJECT_DIR$/src/Printable.java" />
-        <option value="$PROJECT_DIR$/src/PiServer.java" />
         <option value="$PROJECT_DIR$/src/PiClient.java" />
         <option value="$PROJECT_DIR$/src/PiAbstractPeer.java" />
+        <option value="$PROJECT_DIR$/src/PiServer.java" />
       </list>
     </option>
   </component>
@@ -187,8 +189,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -223,7 +226,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -597,6 +599,84 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/PiAbstractPeer.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#initStreams#0;class#PiAbstractPeer#0" expanded="false" />
+            <element signature="method#send#0;class#PiAbstractPeer#0" expanded="false" />
+            <element signature="method#receive#0;class#PiAbstractPeer#0" expanded="false" />
+            <element signature="e#1713#1714#0" expanded="true" />
+            <element signature="e#1745#1746#0" expanded="true" />
+            <element signature="method#disconnect#0;class#PiAbstractPeer#0" expanded="false" />
+            <element signature="method#printException#0;class#PiAbstractPeer#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Printable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PiServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1485">
+          <caret line="51" column="30" selection-start-line="51" selection-start-column="30" selection-end-line="51" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#837#838#0" expanded="true" />
+            <element signature="e#864#865#0" expanded="true" />
+            <element signature="method#waitForConnection#0;class#PiServer#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PiClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1188">
+          <caret line="43" column="24" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="627">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ThreadServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Message.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="11847">
+          <caret line="398" column="32" selection-start-line="398" selection-start-column="32" selection-end-line="398" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PiAbstractPeer.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1980">
           <caret line="63" column="23" selection-start-line="63" selection-start-column="23" selection-end-line="63" selection-end-column="23" />
           <folding>
@@ -604,6 +684,8 @@
             <element signature="method#initStreams#0;class#PiAbstractPeer#0" expanded="false" />
             <element signature="method#send#0;class#PiAbstractPeer#0" expanded="false" />
             <element signature="method#receive#0;class#PiAbstractPeer#0" expanded="false" />
+            <element signature="e#1713#1714#0" expanded="true" />
+            <element signature="e#1745#1746#0" expanded="true" />
             <element signature="method#disconnect#0;class#PiAbstractPeer#0" expanded="false" />
             <element signature="method#printException#0;class#PiAbstractPeer#0" expanded="false" />
           </folding>
@@ -616,6 +698,9 @@
           <caret line="16" column="37" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#837#838#0" expanded="true" />
+            <element signature="e#864#865#0" expanded="true" />
+            <element signature="method#waitForConnection#0;class#PiServer#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -669,6 +754,8 @@
             <element signature="method#initStreams#0;class#PiAbstractPeer#0" expanded="false" />
             <element signature="method#send#0;class#PiAbstractPeer#0" expanded="false" />
             <element signature="method#receive#0;class#PiAbstractPeer#0" expanded="false" />
+            <element signature="e#1713#1714#0" expanded="true" />
+            <element signature="e#1745#1746#0" expanded="true" />
             <element signature="method#disconnect#0;class#PiAbstractPeer#0" expanded="false" />
             <element signature="method#printException#0;class#PiAbstractPeer#0" expanded="false" />
           </folding>
@@ -691,6 +778,9 @@
           <caret line="33" column="2" selection-start-line="33" selection-start-column="2" selection-end-line="33" selection-end-column="2" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#837#838#0" expanded="true" />
+            <element signature="e#864#865#0" expanded="true" />
+            <element signature="method#waitForConnection#0;class#PiServer#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -714,6 +804,8 @@
             <element signature="method#initStreams#0;class#PiAbstractPeer#0" expanded="false" />
             <element signature="method#send#0;class#PiAbstractPeer#0" expanded="false" />
             <element signature="method#receive#0;class#PiAbstractPeer#0" expanded="false" />
+            <element signature="e#1713#1714#0" expanded="true" />
+            <element signature="e#1745#1746#0" expanded="true" />
             <element signature="method#disconnect#0;class#PiAbstractPeer#0" expanded="false" />
             <element signature="method#printException#0;class#PiAbstractPeer#0" expanded="false" />
           </folding>
@@ -733,6 +825,9 @@
           <caret line="33" column="2" selection-start-line="33" selection-start-column="2" selection-end-line="33" selection-end-column="2" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#837#838#0" expanded="true" />
+            <element signature="e#864#865#0" expanded="true" />
+            <element signature="method#waitForConnection#0;class#PiServer#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -756,6 +851,8 @@
             <element signature="method#initStreams#0;class#PiAbstractPeer#0" expanded="false" />
             <element signature="method#send#0;class#PiAbstractPeer#0" expanded="false" />
             <element signature="method#receive#0;class#PiAbstractPeer#0" expanded="false" />
+            <element signature="e#1713#1714#0" expanded="true" />
+            <element signature="e#1745#1746#0" expanded="true" />
             <element signature="method#disconnect#0;class#PiAbstractPeer#0" expanded="false" />
             <element signature="method#printException#0;class#PiAbstractPeer#0" expanded="false" />
           </folding>
@@ -768,6 +865,9 @@
           <caret line="33" column="2" selection-start-line="33" selection-start-column="2" selection-end-line="33" selection-end-column="2" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#837#838#0" expanded="true" />
+            <element signature="e#864#865#0" expanded="true" />
+            <element signature="method#waitForConnection#0;class#PiServer#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -835,19 +935,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PiClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="43" column="24" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
+        <state relative-caret-position="627">
           <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -857,7 +947,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ThreadServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
+        <state relative-caret-position="396">
           <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
@@ -867,7 +957,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Message.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
+        <state relative-caret-position="11847">
           <caret line="398" column="32" selection-start-line="398" selection-start-column="32" selection-end-line="398" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -875,10 +965,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PiServer.java">
+    <entry file="file://$PROJECT_DIR$/src/PiClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="939">
-          <caret line="51" column="30" selection-start-line="51" selection-start-column="30" selection-end-line="51" selection-end-column="30" />
+        <state relative-caret-position="411">
+          <caret line="43" column="24" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -887,15 +977,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/PiAbstractPeer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="474">
-          <caret line="102" column="20" selection-start-line="102" selection-start-column="20" selection-end-line="102" selection-end-column="20" />
+        <state relative-caret-position="1419">
+          <caret line="82" column="22" selection-start-line="82" selection-start-column="22" selection-end-line="82" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#initStreams#0;class#PiAbstractPeer#0" expanded="false" />
             <element signature="method#send#0;class#PiAbstractPeer#0" expanded="false" />
             <element signature="method#receive#0;class#PiAbstractPeer#0" expanded="false" />
+            <element signature="e#1713#1714#0" expanded="true" />
+            <element signature="e#1745#1746#0" expanded="true" />
             <element signature="method#disconnect#0;class#PiAbstractPeer#0" expanded="false" />
             <element signature="method#printException#0;class#PiAbstractPeer#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PiServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1188">
+          <caret line="42" column="6" selection-start-line="42" selection-start-column="6" selection-end-line="42" selection-end-column="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#837#838#0" expanded="true" />
+            <element signature="e#864#865#0" expanded="true" />
+            <element signature="method#waitForConnection#0;class#PiServer#0" expanded="false" />
           </folding>
         </state>
       </provider>
