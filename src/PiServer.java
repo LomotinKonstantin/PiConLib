@@ -53,6 +53,8 @@ public class PiServer extends PiAbstractPeer
         }
         catch (IOException e)
         {
+            conn = null;
+            serverSocket = null;
             printException(e);
         }
         return false;

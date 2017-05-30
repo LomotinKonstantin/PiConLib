@@ -89,6 +89,7 @@ public abstract class PiAbstractPeer
         {
             conn.close();
             connected = false;
+            conn = null;
             return true;
         }
         catch (IOException e)
